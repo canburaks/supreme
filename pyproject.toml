@@ -1,0 +1,49 @@
+[project]
+name = "supreme"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.10.4",
+    "fastapi[standard]>=0.115.6",
+    "pydantic-settings>=2.7.1",
+]
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.sources]
+supabase_client = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "isort>=5.13.2",
+    "mypy>=1.14.1",
+    "pytest>=8.3.4",
+    "ruff>=0.8.6",
+]
+
+
+[tool.ruff]
+# Group violations by containing file.
+output-format = "grouped"
+line-length = 88
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 20
+exclude = [".venv"]
+
+
+[tool.isort]
+profile = "black"
+src_paths = ["app", "packages"]
+multi_line_output = 3
+
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+exclude = [".venv"]
