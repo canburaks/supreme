@@ -21,3 +21,4 @@ uv.lock
 .DS_Store
 .cursorignore
 .cursorrules
+*.code-workspace
