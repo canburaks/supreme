@@ -1,11 +1,15 @@
 from typing import Union
 
-from fastapi import FastAPI
 from supabase_client import get_supabase_client
+from fastapi import Depends, FastAPI
+from .routers import users
 
 supabase_client = get_supabase_client()
 app = FastAPI()
 
+
+
+app.include_router(users.router)
 
 @app.get("/")
 async def read_root():
