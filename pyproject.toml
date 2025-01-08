@@ -9,21 +9,25 @@ dependencies = [
     "fastapi[standard]>=0.115.6",
     "pydantic-settings>=2.7.1",
     "loguru>=0.7.3",
+    "supabase_client",
+    "pydantic-ai[logfire]>=0.0.18",
+]
+
+[dependency-groups]
+dev = [
+    "isort>=5.13.2",
+    "mypy>=1.14.1",
+    "pre-commit>=4.0.1",
+    "pytest>=8.3.4",
+    "ruff>=0.8.6",
 ]
 
 [tool.uv.workspace]
 members = ["packages/*"]
 
 [tool.uv.sources]
+agents = { workspace = true }
 supabase_client = { workspace = true }
-
-[dependency-groups]
-dev = [
-    "isort>=5.13.2",
-    "mypy>=1.14.1",
-    "pytest>=8.3.4",
-    "ruff>=0.8.6",
-]
 
 
 [tool.ruff]

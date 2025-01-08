@@ -1,13 +1,14 @@
 from typing import Union
 
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
+
 from .routers import users
 
 app = FastAPI()
 
 
-
 app.include_router(users.router)
+
 
 @app.get("/")
 async def read_root():
