@@ -33,7 +33,7 @@ sync:
 
 purge:
 	@echo "Purging code..."
-	uv run ruff purge . 
+	uv run ruff clean
 
 add:
 	@echo "Adding dependencies..."
