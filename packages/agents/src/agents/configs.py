@@ -21,4 +21,5 @@ class AgentsSettings(BaseSettings):
 
 @lru_cache()
 def get_agents_settings() -> AgentsSettings:
+    print("\n--get_agents_settings")
     return AgentsSettings()

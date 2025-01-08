@@ -4,20 +4,23 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
+
 dependencies = [
     "pydantic>=2.10.4",
     "fastapi[standard]>=0.115.6",
     "pydantic-settings>=2.7.1",
     "loguru>=0.7.3",
     "supabase_client",
-    "pydantic-ai[logfire]>=0.0.18",
+    "agents",
 ]
 
 [dependency-groups]
 dev = [
     "isort>=5.13.2",
+    "loguru>=0.7.3",
     "mypy>=1.14.1",
     "pre-commit>=4.0.1",
+    "pytest-asyncio>=0.25.2",
     "pytest>=8.3.4",
     "ruff>=0.8.6",
 ]
@@ -52,3 +55,16 @@ python_version = "3.12"
 warn_return_any = true
 warn_unused_configs = true
 exclude = [".venv"]
+
+# pyproject.toml
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+log_file = "static/tests.log"
+console_output_style = "count"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+]
