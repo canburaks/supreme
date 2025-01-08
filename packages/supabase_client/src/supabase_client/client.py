@@ -1,13 +1,15 @@
 import os
-from typing import Coroutine, Union
-
+from typing import Any, Union, Annotated
+from fastapi import Depends, Request
 from pydantic import Field
 from supabase import Client, create_async_client, create_client
 from supabase._async.client import AsyncClient as AsyncClient
+from functools import lru_cache
 
 from .config import get_supabase_settings
 
 
+@lru_cache()
 def get_supabase_client() -> Client:
     """
     Get a supabase async client.
@@ -18,11 +20,12 @@ def get_supabase_client() -> Client:
     if not url or not key:
         raise ValueError("SUPABASE_URL or SUPABASE_KEY is not set")
 
-    supabase: Client = create_client(supabase_url=url, supabase_key=key)
+    supabase_client: Client = create_client(supabase_url=url, supabase_key=key)
 
-    return supabase
+    return supabase_client
 
 
+@lru_cache()
 async def get_supabase_aclient() -> AsyncClient:
     """
     Get a supabase async client.
@@ -35,3 +38,11 @@ async def get_supabase_aclient() -> AsyncClient:
     supabase = create_async_client(supabase_url=url, supabase_key=key)
 
     return await supabase
+
+
+async def get_client() -> Client:
+    client = get_supabase_client()
+    return client
+
+
+ClientDep = Depends(get_client)
