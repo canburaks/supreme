@@ -1,10 +1,9 @@
-import os
-from typing import Any, Union, Annotated
-from fastapi import Depends, Request
-from pydantic import Field
+from functools import lru_cache
+from typing import Union
+
+from fastapi import Depends
 from supabase import Client, create_async_client, create_client
 from supabase._async.client import AsyncClient as AsyncClient
-from functools import lru_cache
 
 from .config import get_supabase_settings
 

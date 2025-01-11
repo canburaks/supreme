@@ -14,7 +14,6 @@ class SupabaseSettings(BaseSettings):
         extra: str = "allow"
 
 
-
 @lru_cache()
 def get_supabase_settings() -> SupabaseSettings:
     return SupabaseSettings()

@@ -22,3 +22,5 @@ uv.lock
 .cursorignore
 .cursorrules
 *.code-workspace
+**/logs/*
+*.log

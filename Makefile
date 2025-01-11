@@ -11,7 +11,7 @@ serve:
 
 test:
 	@echo "Running tests..."
-	uv run ruff test . 
+	uv run pytest --no-header -vv
 
 format:
 	@echo "Formatting code..."

@@ -1,9 +1,11 @@
-from typing import TypedDict, List, Optional, Any
 from datetime import datetime
+from typing import Any, List, Optional, TypedDict
+
 
 class UserIdentity(TypedDict):
     # Add specific identity fields if needed
     pass
+
 
 class User(TypedDict):
     id: str
@@ -29,6 +31,7 @@ class User(TypedDict):
     factors: Optional[Any]
     is_anonymous: bool
 
+
 class Session(TypedDict):
     provider_token: Optional[str]
     provider_refresh_token: Optional[str]
@@ -38,6 +41,7 @@ class Session(TypedDict):
     expires_at: int
     token_type: str
     user: User
+
 
 class AuthResponse(TypedDict):
     user: User
